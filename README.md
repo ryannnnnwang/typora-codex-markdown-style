@@ -59,8 +59,8 @@ chmod +x install.sh
 ## 重装或换电脑
 
 ```bash
-git clone <本仓库地址>
-cd <仓库目录>
+git clone git@github.com:ryannnnnwang/typora-codex-markdown-style.git
+cd typora-codex-markdown-style
 chmod +x install.sh
 ./install.sh
 ```
