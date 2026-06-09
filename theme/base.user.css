@@ -1,0 +1,285 @@
+:root {
+  --codex-text: #1f2328;
+  --codex-heading: #171a1f;
+  --codex-muted: #5f6673;
+  --codex-code-bg: #eeeeef;
+  --codex-inline-code-bg: #e9e9ea;
+  --codex-code-text: #20242a;
+  --codex-border: #d8dee4;
+}
+
+html,
+body,
+#write {
+  color: var(--codex-text);
+  font-family: "PingFang SC", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 16.5px;
+  font-weight: 500;
+  line-height: 1.72;
+  letter-spacing: 0.01em;
+}
+
+#write {
+  max-width: 980px;
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+#write p,
+#write li,
+#write td,
+#write th {
+  color: var(--codex-text);
+}
+
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+  color: var(--codex-heading);
+  font-weight: 760;
+  letter-spacing: -0.02em;
+  line-height: 1.28;
+}
+
+#write h1 {
+  font-size: 1.8em;
+}
+
+#write h2 {
+  font-size: 1.45em;
+  margin-top: 1.5em;
+}
+
+#write h3 {
+  font-size: 1.22em;
+}
+
+#write strong {
+  color: #15181d;
+  font-weight: 760;
+}
+
+#write a {
+  color: #0969da;
+  font-weight: 560;
+}
+
+#write code,
+#write tt {
+  color: var(--codex-code-text);
+  background: var(--codex-inline-code-bg);
+  border-radius: 6px;
+  font-family: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.94em;
+  font-weight: 500;
+  padding: 0.08em 0.35em;
+}
+
+#write .md-fences,
+#write pre,
+#write .CodeMirror,
+#write .cm-s-inner {
+  color: var(--codex-code-text);
+  background: var(--codex-code-bg);
+  border: 0;
+  border-radius: 12px;
+  font-family: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+#write .md-fences {
+  padding: 42px 16px 12px;
+  box-shadow: none;
+}
+
+#write .md-fences::before {
+  content: attr(lang);
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  z-index: 2;
+  color: #858585;
+  font-family: "PingFang SC", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0;
+  pointer-events: none;
+}
+
+#write .md-fences .code-tooltip.md-tooltip-remove {
+  top: 12px;
+  right: auto;
+  bottom: auto;
+  left: 16px;
+  z-index: 3;
+  width: auto;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--codex-code-bg);
+  box-shadow: none;
+}
+
+#write .md-fences .ty-cm-lang-input {
+  min-width: 24px;
+  height: 24px;
+  padding: 0;
+  color: #858585;
+  background: transparent;
+  border: 0;
+  font-family: "PingFang SC", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+}
+
+#write .md-fences .typ-buttons {
+  display: flex;
+  top: 10px;
+  right: 12px;
+  z-index: 4;
+}
+
+#write .md-fences button.typ-block-operate-button {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  color: #858585;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#write .md-fences button.typ-block-operate-button:hover {
+  color: #4f4f4f;
+  background: rgba(0, 0, 0, 0.055);
+}
+
+#write .md-fences button.typ-block-operate-button:active {
+  background: rgba(0, 0, 0, 0.09);
+  box-shadow: none;
+}
+
+#write .md-fences button.typ-block-operate-button .fa {
+  position: absolute;
+  inset: 0;
+  font-size: 0;
+}
+
+#write .md-fences button.typ-block-operate-button .fa::before,
+#write .md-fences button.typ-block-operate-button .fa::after {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 13px;
+  border: 1.7px solid currentColor;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+#write .md-fences button.typ-block-operate-button .fa::before {
+  top: 6px;
+  left: 10px;
+  z-index: 1;
+}
+
+#write .md-fences button.typ-block-operate-button .fa::after {
+  top: 9px;
+  left: 7px;
+  z-index: 2;
+  background: var(--codex-code-bg);
+}
+
+#write .md-fences button.codex-copy-success .fa::before {
+  top: 6px;
+  left: 7px;
+  width: 14px;
+  height: 8px;
+  background: transparent;
+  border-width: 0 0 2px 2px;
+  border-radius: 0;
+  transform: rotate(-45deg);
+}
+
+#write .md-fences button.codex-copy-success .fa::after {
+  display: none;
+}
+
+#write .CodeMirror-lines {
+  padding: 4px 0;
+}
+
+#write .CodeMirror pre {
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+#write .cm-s-inner .cm-keyword {
+  color: #9a26b3;
+}
+
+#write .cm-s-inner .cm-string {
+  color: #3f9b4d;
+}
+
+#write .cm-s-inner .cm-comment {
+  color: #9aa0aa;
+  font-style: italic;
+  font-weight: 520;
+}
+
+#write .cm-s-inner .cm-variable,
+#write .cm-s-inner .cm-variable-2,
+#write .cm-s-inner .cm-property {
+  color: #20242a;
+}
+
+#write blockquote {
+  color: #3f4652;
+  background: #f6f8fa;
+  border-left: 4px solid var(--codex-border);
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
+#write table {
+  font-size: 0.96em;
+}
+
+#write mark {
+  background: #fff1a7;
+  color: #1f2328;
+}
+
+#typora-sidebar,
+.sidebar-content {
+  color: #30363d;
+  font-family: "PingFang SC", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.outline-item {
+  line-height: 1.6;
+}
+
+.outline-item-active,
+.outline-item:hover {
+  color: #171a1f;
+  font-weight: 700;
+}
