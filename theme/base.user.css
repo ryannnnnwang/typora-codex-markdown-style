@@ -265,6 +265,39 @@ body,
   color: #1f2328;
 }
 
+#write .md-task-list-item > input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  margin-top: calc(1em - 8px);
+  border: 1.5px solid #b7bdc5;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+#write .md-task-list-item > input[type="checkbox"]:checked,
+#write .md-task-list-item > input[type="checkbox"][checked] {
+  position: absolute;
+  border-color: #3478f6;
+  background: #3478f6;
+}
+
+#write .md-task-list-item > input[type="checkbox"]:checked::after,
+#write .md-task-list-item > input[type="checkbox"][checked]::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 4px;
+  height: 7px;
+  border: solid #ffffff;
+  border-width: 0 1.8px 1.8px 0;
+  transform: rotate(45deg);
+}
+
 #typora-sidebar,
 .sidebar-content {
   color: #30363d;
