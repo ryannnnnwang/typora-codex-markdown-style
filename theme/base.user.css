@@ -272,7 +272,7 @@ body,
   height: 15px;
   margin-top: calc(1em - 8px);
   border: 1.5px solid #b7bdc5;
-  border-radius: 50%;
+  border-radius: 4px;
   background: #ffffff;
   box-shadow: none;
   cursor: pointer;
