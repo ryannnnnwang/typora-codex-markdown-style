@@ -110,6 +110,8 @@ body,
     "Segoe UI", sans-serif;
   font-size: 14px;
   font-weight: 500;
+  font-stretch: normal;
+  font-variant: normal;
   height: 24px;
   line-height: 24px;
   letter-spacing: 0;
@@ -147,7 +149,10 @@ body,
     "Segoe UI", sans-serif;
   font-size: 14px;
   font-weight: 500;
+  font-stretch: normal;
+  font-variant: normal;
   line-height: 24px;
+  letter-spacing: 0;
   text-align: left;
   outline: 0;
 }
