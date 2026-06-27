@@ -155,6 +155,10 @@ body,
   letter-spacing: 0;
   text-align: left;
   outline: 0;
+  caret-color: transparent;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 #write .md-fences .typ-buttons {

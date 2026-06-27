@@ -69,12 +69,40 @@ function addCopyButton(codeblock) {
   buttons.append(button);
 }
 
+function lockLanguageInput(codeblock) {
+  codeblock.querySelectorAll(".ty-cm-lang-input").forEach((input) => {
+    if (input.dataset.codexLangLocked === "1") {
+      return;
+    }
+
+    input.dataset.codexLangLocked = "1";
+    input.readOnly = true;
+    input.tabIndex = -1;
+    input.setAttribute("aria-readonly", "true");
+
+    ["beforeinput", "keydown", "paste", "drop"].forEach((eventName) => {
+      input.addEventListener(eventName, (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+      });
+    });
+
+    input.addEventListener("focus", () => {
+      input.blur();
+    });
+  });
+}
+
 function scanCodeblocks(root = document) {
   if (root.matches?.(".md-fences")) {
     addCopyButton(root);
+    lockLanguageInput(root);
   }
 
-  root.querySelectorAll?.(".md-fences").forEach(addCopyButton);
+  root.querySelectorAll?.(".md-fences").forEach((codeblock) => {
+    addCopyButton(codeblock);
+    lockLanguageInput(codeblock);
+  });
 }
 
 export default class CodeblockCopyButtonPlugin extends Plugin {
