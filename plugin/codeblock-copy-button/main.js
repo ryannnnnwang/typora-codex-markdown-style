@@ -93,24 +93,64 @@ function lockLanguageInput(codeblock) {
   });
 }
 
+function warmCodeblock(codeblock) {
+  if (!codeblock.classList.contains("mock-cm")) {
+    return;
+  }
+
+  const cid = codeblock.getAttribute("cid");
+  if (cid) {
+    window.editor.fences.getCm(cid);
+  }
+}
+
+let codeblockPreloader;
+
+function observeCodeblock(codeblock) {
+  if (codeblockPreloader && codeblock.classList.contains("mock-cm")) {
+    codeblockPreloader.observe(codeblock);
+  }
+}
+
 function scanCodeblocks(root = document) {
   if (root.matches?.(".md-fences")) {
     addCopyButton(root);
     lockLanguageInput(root);
+    observeCodeblock(root);
   }
 
   root.querySelectorAll?.(".md-fences").forEach((codeblock) => {
     addCopyButton(codeblock);
     lockLanguageInput(codeblock);
+    observeCodeblock(codeblock);
   });
 }
 
 export default class CodeblockCopyButtonPlugin extends Plugin {
   onload() {
+    codeblockPreloader = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            codeblockPreloader.unobserve(entry.target);
+            warmCodeblock(entry.target);
+          }
+        });
+      },
+      {
+        // Initialize fences before they scroll into view, without eagerly
+        // constructing CodeMirror for every code block in a large document.
+        rootMargin: "1200px 0px",
+      }
+    );
+
     this.registerMarkdownPostProcessor(
       HtmlPostProcessor.from({
         selector: ".md-fences",
-        process: addCopyButton,
+        process: (codeblock) => {
+          addCopyButton(codeblock);
+          observeCodeblock(codeblock);
+        },
       })
     );
 
@@ -134,7 +174,11 @@ export default class CodeblockCopyButtonPlugin extends Plugin {
       subtree: true,
     });
 
-    this.register(() => observer.disconnect());
+    this.register(() => {
+      observer.disconnect();
+      codeblockPreloader.disconnect();
+      codeblockPreloader = undefined;
+    });
     scanCodeblocks(window.editor.writingArea);
     window.setTimeout(() => scanCodeblocks(window.editor.writingArea), 300);
   }

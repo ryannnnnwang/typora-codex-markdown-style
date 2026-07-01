@@ -99,6 +99,16 @@ body,
   box-shadow: none;
 }
 
+/*
+ * Typora initially renders off-screen fences as a plain <pre class="mock-cm">
+ * and replaces them with CodeMirror near the viewport. Match CodeMirror's
+ * 4px line padding in that temporary state so the code does not move while
+ * syntax highlighting is attached.
+ */
+#write .md-fences.mock-cm {
+  padding: 46px 20px 16px;
+}
+
 #write .md-fences::before {
   content: attr(lang);
   position: absolute;
